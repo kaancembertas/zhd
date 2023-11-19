@@ -1,3 +1,2 @@
-const add = (a: number, b: number): number => a+b;
-
-export {add};
+const add = (a: number, b: number): number => a + b;
+export { add };
