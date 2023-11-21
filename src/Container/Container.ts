@@ -1,5 +1,5 @@
-import { container } from 'tsyringe';
-import { Constructor } from './types';
+import { container, Lifecycle as TsyringeLifecycle } from 'tsyringe';
+import { Constructor, Lifecycle, RegisterOptions } from './types';
 import ContainerTokens from './ContainerTokens';
 
 export default class Container<T extends ContainerTokens> {
@@ -18,6 +18,13 @@ export default class Container<T extends ContainerTokens> {
 
     public registerTransient = <P extends keyof T>(token: P, provider: Constructor<T[P]>): void => {
         container.register(token as string, provider);
+    };
+
+    public register = <P extends keyof T>(token: P, provider: Constructor<T[P]>, options?: RegisterOptions): void => {
+        const lifecycle = options?.lifecycle ?? Lifecycle.Transient;
+        const tsyringeLifecycle =
+            lifecycle === Lifecycle.Transient ? TsyringeLifecycle.Transient : TsyringeLifecycle.Singleton;
+        container.register(token as string, provider, { lifecycle: tsyringeLifecycle });
     };
 
     public resolve = <P extends keyof T>(token: P): T[P] => container.resolve(token as string);

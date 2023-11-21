@@ -1,42 +1,55 @@
 import 'reflect-metadata';
-import { Container, ContainerTokens } from 'zhd';
+import { Container, ContainerTokens, IAsyncCommand, IAsyncCommandHandler, IAsyncQuery, IAsyncQueryExecutor } from 'zhd';
 
-interface ITest {
-    test: () => void;
-}
-
-class TestInstance1 implements ITest {
-    test = () => {
-        console.log('TestInstanceI');
-    };
-}
-
-interface ITest2 {
-    test2: () => void;
-}
-
-class Test2Instance implements ITest2 {
-    test2 = () => {
-        console.log('Test2Instance');
-    };
-}
-
-interface ApplicationContainerTokens extends ContainerTokens {
-    ITest: ITest;
-    ITest2: ITest2;
-}
+interface ApplicationContainerTokens extends ContainerTokens {}
 
 const container = Container.getInstance<ApplicationContainerTokens>();
 
-container.registerSingleton('ITest', TestInstance1);
-container.registerSingleton('ITest', TestInstance1);
-container.registerSingleton('ITest', TestInstance1);
-container.registerSingleton('ITest', TestInstance1);
-container.registerSingleton('ITest', TestInstance1);
-container.registerSingleton('ITest2', Test2Instance);
+class DisplayNameCommand implements IAsyncCommand {
+    readonly identifier = 'DisplayNameCommand';
+    result?: boolean;
+    public name: string;
 
-console.log('=== ITEST Resolve ===');
-container.resolveAll('ITest').forEach((i) => i.test());
+    constructor(name: string) {
+        this.name = name;
+    }
+}
 
-console.log('=== ITEST2 Resolve ===');
-container.resolveAll('ITest2').forEach((i) => i.test2());
+class DisplayNameCommandHandler implements IAsyncCommandHandler<DisplayNameCommand> {
+    public readonly identifier = 'DisplayNameCommand';
+
+    public handleAsync = async (command: DisplayNameCommand): Promise<void> => {
+        console.log(command.name);
+        command.result = true;
+    };
+}
+
+class GetNameQuery implements IAsyncQuery<string> {
+    public readonly identifier = 'GetNameQuery';
+}
+
+class GetNameQueryExecutor implements IAsyncQueryExecutor<GetNameQuery, string> {
+    public readonly identifier = 'GetNameQuery';
+
+    public executeAsync = async (query: GetNameQuery): Promise<string> => {
+        return 'KAAN';
+    };
+}
+
+container.register('IAsyncCommandHandler', DisplayNameCommandHandler);
+container.register('IAsyncQueryExecutor', GetNameQueryExecutor);
+
+const main = async () => {
+    const query: IAsyncQuery<string> = new GetNameQuery();
+    const queryProcessor = container.resolve('IQueryProcessor');
+    const result = await queryProcessor.processAsync(query);
+
+    console.log('QUERY RESULT', result);
+
+    const command = new DisplayNameCommand(result);
+    const commandBus = container.resolve('ICommandBus');
+    await commandBus.sendAsync(command);
+    console.log('Command Result', command.result);
+};
+
+main();
