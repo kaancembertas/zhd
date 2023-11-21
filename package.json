@@ -1,11 +1,12 @@
 {
     "name": "zhd",
     "scripts": {
-        "example": "ts-node --esm example/index.ts",
-        "lint": "eslint . --ext .js,.ts"
+        "example": "cd example && ts-node index.ts",
+        "lint": "eslint . --ext .js,.ts",
+        "build": "tsc"
     },
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "index.ts",
     "license": "MIT",
     "devDependencies": {
         "@types/node": "20.9.2",
@@ -17,8 +18,9 @@
         "eslint-plugin-prettier": "5.0.1",
         "eslint-plugin-promise": "^6.0.0",
         "prettier": "3.1.0",
-        "ts-node": "10.9.1",
-        "tsconfig-paths": "4.2.0",
         "typescript": "*"
+    },
+    "dependencies": {
+        "tsyringe": "4.8.0"
     }
 }

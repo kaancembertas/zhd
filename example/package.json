@@ -1,6 +1,13 @@
 {
-  "name": "@zhd/example",
-  "version": "1.0.0",
-  "main": "index.ts",
-  "license": "MIT"
+    "name": "example",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "license": "MIT",
+    "devDependencies": {
+        "ts-node": "10.9.1",
+        "tsconfig-paths": "4.2.0"
+    },
+    "dependencies": {
+        "reflect-metadata": "0.1.13"
+    }
 }

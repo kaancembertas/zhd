@@ -1,2 +1,2 @@
-const add = (a: number, b: number): number => a + b;
-export { add };
+// @index('./*', f => `export * from '${f.path}'`)
+export * from './Container';

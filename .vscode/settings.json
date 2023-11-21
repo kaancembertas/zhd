@@ -8,6 +8,7 @@
     },
     "editor.formatOnSave": true,
     "typescript.preferences.quoteStyle": "single",
-    "typescript.preferences.importModuleSpecifier": "non-relative",
-    "emmet.showExpandedAbbreviation": "never"
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "emmet.showExpandedAbbreviation": "never",
+    "javascript.preferences.importModuleSpecifier": "relative"
 }
