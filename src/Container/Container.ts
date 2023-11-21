@@ -1,6 +1,7 @@
 import { container, Lifecycle as TsyringeLifecycle } from 'tsyringe';
 import { Constructor, Lifecycle, RegisterOptions } from './types';
 import ContainerTokens from './ContainerTokens';
+import ZhdBootstrapper from '../ZhdBootstrapper/ZhdBootstrapper';
 
 export default class Container<T extends ContainerTokens> {
     private constructor() {}
@@ -40,5 +41,8 @@ export default class Container<T extends ContainerTokens> {
         }
     };
 
-    public reset = (): void => container.reset();
+    public reset = (): void => {
+        container.reset();
+        ZhdBootstrapper.registerDependencies();
+    };
 }
