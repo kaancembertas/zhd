@@ -1,5 +1,7 @@
 {
     "name": "@zhd/core",
+    "repository": "https://github.com/kaancembertas/zhd",
+    "author": "Kaan Çembertaş <kaancembertas@gmail.com> (https://github.com/kaancembertas)",
     "scripts": {
         "example": "cd example && ts-node index.ts",
         "lint": "eslint . --ext .js,.ts",
