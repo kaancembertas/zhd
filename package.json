@@ -10,6 +10,7 @@
     "main": "index.ts",
     "license": "MIT",
     "devDependencies": {
+        "@release-it/conventional-changelog": "^8.0.1",
         "@types/node": "20.9.2",
         "@typescript-eslint/eslint-plugin": "^6.4.0",
         "eslint": "^8.0.1",
