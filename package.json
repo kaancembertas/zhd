@@ -1,5 +1,5 @@
 {
-    "name": "zhd",
+    "name": "@zhd/core",
     "scripts": {
         "example": "cd example && ts-node index.ts",
         "lint": "eslint . --ext .js,.ts",
