@@ -2,7 +2,8 @@
     "name": "@zhd/core",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kaancembertas/zhd.git"
+        "url": "git+https://github.com/kaancembertas/zhd.git",
+        "directory": "packages/@zhd/core"
     },
     "author": "Kaan Çembertaş <kaancembertas@gmail.com> (https://github.com/kaancembertas)",
     "scripts": {
@@ -33,7 +34,7 @@
         "tsyringe": "4.8.0"
     },
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
+        "registry": "https://npm.pkg.github.com/",
         "access": "public"
     }
 }
