@@ -1,6 +1,9 @@
 {
     "name": "@zhd/core",
-    "repository": "https://github.com/kaancembertas/zhd.git",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kaancembertas/zhd.git"
+    },
     "author": "Kaan Çembertaş <kaancembertas@gmail.com> (https://github.com/kaancembertas)",
     "scripts": {
         "example": "cd example && ts-node index.ts",
@@ -30,7 +33,6 @@
         "tsyringe": "4.8.0"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@zhd/core",
         "access": "public"
     }
 }
