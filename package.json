@@ -30,7 +30,6 @@
         "tsyringe": "4.8.0"
     },
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "access": "public"
+        "registry": "https://registry.npmjs.org/"
     }
 }
