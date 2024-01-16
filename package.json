@@ -1,6 +1,9 @@
 {
     "name": "@zhd/core",
-    "repository": "https://github.com/kaancembertas/zhd",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kaancembertas/zhd.git"
+    },
     "author": "Kaan Çembertaş <kaancembertas@gmail.com> (https://github.com/kaancembertas)",
     "scripts": {
         "example": "cd example && ts-node index.ts",
