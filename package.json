@@ -30,7 +30,7 @@
         "tsyringe": "4.8.0"
     },
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
+        "registry": "https://npm.pkg.github.com/@zhd/core",
         "access": "public"
     }
 }
