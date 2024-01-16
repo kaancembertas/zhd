@@ -1,5 +1,5 @@
 {
-    "name": "@zhd/core",
+    "name": "zhd",
     "repository": {
         "type": "git",
         "url": "https://github.com/kaancembertas/zhd.git"
